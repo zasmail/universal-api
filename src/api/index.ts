@@ -31,7 +31,7 @@ router.get('/downloadDoc', (req, res) => {
 
   downloadDocument(workflowId as string, documentId as string, token as string)
     .then((filePath: string) => {
-      res.download(filePath, 'downloaded_document.docx');
+      res.status(200).json({ filePath: filePath });
     })
     .catch((error: Error) => {
       console.error(error);
