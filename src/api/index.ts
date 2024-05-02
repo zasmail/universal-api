@@ -1,4 +1,4 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
 import request from 'request';
 import fs from 'fs';
 import path from 'path'; // Import the path module to handle file paths
@@ -24,7 +24,8 @@ router.get<{}, MessageResponse>('/', (req, res) => {
 
 router.use('/emojis', emojis);
 
-router.get('/downloadDoc', (req: Request, res: Response) => {
+// router.get<{}, MessageResponse>('/', (req, res) => {
+router.get('/downloadDoc', (req, res) => {
   const { workflowId, documentId } = req.query;
   const token = "B9NMNxRzOx9XQdMlKd9OGXuDNP2l6rpzhaPc7N_eD34g";
 
@@ -38,7 +39,7 @@ router.get('/downloadDoc', (req: Request, res: Response) => {
     });
 });
 
-router.put('/pushDoc/:versionId', async (req: Request, res: Response) => {
+router.put('/pushDoc/:versionId', async (req, res) => {
   const versionId = req.params.versionId;
   const fileName = 'downloaded_document.docx';
   const filePath = path.join(__dirname, '..', 'downloads', fileName);
