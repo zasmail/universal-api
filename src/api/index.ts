@@ -27,6 +27,9 @@ router.use('/emojis', emojis);
 // router.get<{}, MessageResponse>('/', (req, res) => {
 router.get('/downloadDoc', (req, res) => {
   const { workflowId, documentId } = req.query;
+  console.log('workflowId:', workflowId);
+  console.log('documentId:', documentId);
+  console.log("I am in downloadDoc");
   const token = "B9NMNxRzOx9XQdMlKd9OGXuDNP2l6rpzhaPc7N_eD34g";
 
   downloadDocument(workflowId as string, documentId as string, token as string)
